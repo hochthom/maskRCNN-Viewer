@@ -29,7 +29,7 @@ class GuiControl(object):
         self.instanceSegModel = None
         # check if we find the mask rcnn package
         if importlib.util.find_spec("mrcnn") is not None:
-            from MaskRCNN import MaskRCNN
+            from .MaskRCNN import MaskRCNN
             self.instanceSegModel = MaskRCNN()
         # update labels
         self._update_labels()

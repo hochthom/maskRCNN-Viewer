@@ -63,13 +63,13 @@ class SequenceControl(object):
         raise NotImplementedError
 
     def _processImage(self, img, labels, result):
-        # scle if necessary
-        if self.scale != 1:
-            img = cv2.resize(img, None, fx=self.scale, fy=self.scale)
         # set rgb ordering
         img = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
         if result is not None:
             self._labelInstances(img, labels, result)
+        # scale if necessary
+        if self.scale != 1:
+            img = cv2.resize(img, None, fx=self.scale, fy=self.scale)
         return img
         
     def _labelInstances(self, image, labels, result):
